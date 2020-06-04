@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><tns:vdsPlugin xmlns:tns="http://www.informatica.com/VdsPlugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.informatica.com/VdsPlugin vds_plugin.xsd ">
+
+    <tns:id>_CUSTOM_SRC_HTTPX</tns:id>
+    <tns:displayName>HTTPX Source</tns:displayName>
+    <tns:version>2.3.2-0.1</tns:version>
+    <tns:type>SOURCE</tns:type>
+
+    <tns:configuration>
+        <tns:fields>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>URL</tns:name>
+                    <tns:displayName>URL</tns:displayName>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+						<tns:default>http://127.0.0.1</tns:default>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+        </tns:fields>
+    </tns:configuration>
+    <tns:pluginStatistics>
+        <tns:statistic>
+            <tns:id>1</tns:id>
+            <tns:displayName>Number of Connections</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+        <tns:statistic>
+            <tns:id>2</tns:id>
+            <tns:displayName>Number of Disconnections</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+    </tns:pluginStatistics>
+    <tns:runTime>
+        <tns:pluginJar>httpx-vds-source.jar</tns:pluginJar>
+        <tns:pluginClass>com.infa.vds.custom.sources.HttpXSource</tns:pluginClass>
+    </tns:runTime>
+    <tns:helpKey/>
+</tns:vdsPlugin>

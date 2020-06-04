@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><tns:vdsPlugin xmlns:tns="http://www.informatica.com/VdsPlugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.informatica.com/VdsPlugin vds_plugin.xsd ">
+
+    <tns:id>_CUSTOM_SRC_HL7</tns:id>
+    <tns:displayName>HL7 Source</tns:displayName>
+    <tns:version>2.3.2.52</tns:version>
+    <tns:type>SOURCE</tns:type>
+
+    <!-- Below is the sample field tags added for textControl, checkBoxControl, 
+        listControl, radioGroupControl. You have to add the fields for your sample 
+        source based on the requirement. Example: text field, drop down, check box 
+        , text area etc Note: Please refer vds_plugin.xsd for further details. Path: 
+        VDS-api-reference.zip\schema\vds_plugin.xsd -->
+
+    <tns:configuration>
+        <tns:fields>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>host-text-field</tns:name>
+                    <tns:displayName>Host</tns:displayName>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+						<tns:default>127.0.0.1</tns:default>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>port-field</tns:name>
+                    <tns:displayName>Port</tns:displayName>
+                    <tns:mandatory>true</tns:mandatory>
+					<tns:doubleTextField>
+						<tns:minValue>0</tns:minValue>
+						<tns:default>9876</tns:default>
+					</tns:doubleTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:radioGroupControl>
+                    <tns:name>clientserver-radio-group</tns:name>
+                    <tns:displayName>Client/Server</tns:displayName>
+                    <tns:items>
+                        <tns:item>
+                            <tns:displayName>Server</tns:displayName>
+                            <tns:id>1</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>Client</tns:displayName>
+                            <tns:id>2</tns:id>
+                        </tns:item>
+                    </tns:items>
+                    <tns:default>1</tns:default>
+                </tns:radioGroupControl>
+            </tns:field>
+            <tns:field>
+                <tns:radioGroupControl>
+                    <tns:name>transform-radio-group</tns:name>
+                    <tns:displayName>Data Transform</tns:displayName>
+                    <tns:items>
+                        <tns:item>
+                            <tns:displayName>Raw</tns:displayName>
+                            <tns:id>1</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>XML</tns:displayName>
+                            <tns:id>2</tns:id>
+                        </tns:item>
+                    </tns:items>
+                    <tns:default>2</tns:default>
+                </tns:radioGroupControl>
+            </tns:field>
+        </tns:fields>
+    </tns:configuration>
+    <tns:pluginStatistics>
+        <tns:statistic>
+            <tns:id>1</tns:id>
+            <tns:displayName>Sample Source Plugin Stat1</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+        <tns:statistic>
+            <tns:id>2</tns:id>
+            <tns:displayName>Sample Source Plugin Stat2</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+    </tns:pluginStatistics>
+    <tns:runTime>
+        <tns:pluginJar>HL7-vds-source.jar</tns:pluginJar>
+        <tns:pluginClass>com.infa.HL7_vds_source.HL7Source</tns:pluginClass>
+    </tns:runTime>
+    <tns:helpKey/>
+</tns:vdsPlugin>

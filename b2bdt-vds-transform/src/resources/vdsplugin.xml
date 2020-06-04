@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:vdsPlugin xmlns:tns="http://www.informatica.com/VdsPlugin"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://www.informatica.com/VdsPlugin vds_plugin.xsd ">
+    <tns:id>B2BDT</tns:id>
+    <tns:displayName>B2B Data Transformation</tns:displayName>
+    <tns:version>2.3.0.5</tns:version>
+    <tns:type>TRANSFORM</tns:type>
+    <tns:configuration>
+        <tns:fields>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>ServiceDBName</tns:name>
+                    <tns:displayName>Data Transformation Service Name</tns:displayName>
+                    <tns:description>The name of the B2B service name that will be invoked for the transformation.</tns:description>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+                        <tns:placeholder>Parse_SBCU_logfile_v5_4</tns:placeholder>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:listControl>
+                    <tns:name>outputRecordDelimiter</tns:name>
+                    <tns:displayName>Output Record Delimiter</tns:displayName>
+                    <tns:description>The record delimeter the B2B service will use and return to VDS for demarkating / delimiting multi-record responses.</tns:description>         
+                    <tns:items>
+                        <tns:item>
+                            <tns:displayName>LF</tns:displayName>
+                            <tns:id>LF</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>CRLF</tns:displayName>
+                            <tns:id>CRLF</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>Custom</tns:displayName>
+                            <tns:id>CUSTOM</tns:id>
+                            <tns:textFields>
+                                <tns:textControl>
+                                    <tns:name>outputRecordCustomDelimiter</tns:name>
+                                    <tns:displayName>Output Record Custom Delimiter</tns:displayName>
+                                    <tns:mandatory>true</tns:mandatory>
+                                    <tns:stringTextField>
+                                        <tns:maxLength>100</tns:maxLength>
+                                        <tns:secure>false</tns:secure>
+                                    </tns:stringTextField>
+                                </tns:textControl>
+                            </tns:textFields>
+                        </tns:item>
+                    </tns:items>
+                    <tns:default>LF</tns:default>
+                </tns:listControl>
+            </tns:field>
+            <tns:field>
+                <tns:listControl>
+                    <tns:name>outputFieldDelimiter</tns:name>
+                    <tns:displayName>Output Field Delimiter</tns:displayName>
+                    <tns:description>The field delimeter the B2B service will output and return to VDS for separating / delimiting fields contained within each output record.</tns:description>
+                    <tns:items>
+                        <tns:item>
+                            <tns:displayName>COLON (:)</tns:displayName>
+                            <tns:id>:</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>COMMA (,)</tns:displayName>
+                            <tns:id>,</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>EQUALS (=)</tns:displayName>
+                            <tns:id>=</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>PIPE (|)</tns:displayName>
+                            <tns:id>|</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>SEMICOLON (;)</tns:displayName>
+                            <tns:id>;</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>SPACE</tns:displayName>
+                            <tns:id>SPACE</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>TAB</tns:displayName>
+                            <tns:id>TAB</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>Custom</tns:displayName>
+                            <tns:id>CUSTOM</tns:id>
+                            <tns:textFields>
+                                <tns:textControl>
+                                    <tns:name>outputFieldCustomDelimiter</tns:name>
+                                    <tns:displayName>Output Field Custom Delimiter</tns:displayName>
+                                    <tns:mandatory>true</tns:mandatory>
+                                    <tns:stringTextField>
+                                        <tns:maxLength>100</tns:maxLength>
+                                        <tns:secure>false</tns:secure>
+                                    </tns:stringTextField>
+                                </tns:textControl>
+                            </tns:textFields>
+                        </tns:item>
+                    </tns:items>
+                    <tns:default>COMMA</tns:default>
+                </tns:listControl>
+            </tns:field>
+        </tns:fields>
+    </tns:configuration>
+  
+    <tns:runTime>
+        <tns:pluginJar>b2bdt-vds-transform.jar</tns:pluginJar>
+        <tns:pluginClass>com.informatica.vds.custom.transforms.B2BDT_VDSTransform</tns:pluginClass>
+    </tns:runTime>
+</tns:vdsPlugin>

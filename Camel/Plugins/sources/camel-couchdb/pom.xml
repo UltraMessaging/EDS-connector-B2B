@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.informatica.messaging.vds.plugins</groupId>
+        <artifactId>sources</artifactId>
+        <version>2.3.0</version>
+    </parent>
+    <groupId>com.informatica.messaging.vds.plugins.sources</groupId>
+    <artifactId>camel-couchdb</artifactId>
+    <version>2.3.0</version>
+    <name>camel-couchdb</name>
+    <url>http://www.informatica.com/</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.informatica.messaging</groupId>
+            <artifactId>vds-api</artifactId>
+            <version>${vds.release.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.informatica.messaging.vds.plugins.sources</groupId>
+            <artifactId>camel-common</artifactId>
+            <version>${vds.release.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock-junit4</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock-legacy</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- Camel -->
+		<dependency>
+    		<groupId>org.apache.camel</groupId>
+    		<artifactId>camel-couchdb</artifactId>
+    		<version>2.16.1</version>
+		</dependency>
+    	
+    	<dependency>
+			<groupId>org.lightcouch</groupId>
+			<artifactId>lightcouch</artifactId>
+			<version>0.1.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		
+		<dependency>
+    		<groupId>org.apache.httpcomponents</groupId>
+    		<artifactId>httpcore</artifactId>
+    		<version>4.4</version>
+		</dependency>
+		
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+                <configuration>
+                    <artifactSet>
+                        <excludes>
+                            <exclude>com.informatica.messaging.binge</exclude>
+                            <exclude>net.sourceforge.cobertura:cobertura</exclude>
+                        </excludes>
+                    </artifactSet>
+                    <shadedArtifactAttached>true</shadedArtifactAttached>
+                    <!-- <minimizeJar>true</minimizeJar> -->
+
+					<transformers>
+						 <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                        	<resource>META-INF/services/org/apache/camel/TypeConverter</resource>
+                    	</transformer>
+						<transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+					</transformers>
+					
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="${basedir}/empty" />
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>install</id>
+                        <phase>install </phase>
+                        <configuration>
+                            <target if="dev.install">
+                                <copy force="true" overwrite="true"
+                                    todir="${dev.install}/admind/plugins/infa/">
+                                    <fileset dir="target">
+                                        <include name="*.zip" />
+                                    </fileset>
+                                </copy>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+             -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <!-- this is used for inheritance merges -->
+                        <id>make-assembly</id>
+                        <!-- bind to the packaging phase -->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

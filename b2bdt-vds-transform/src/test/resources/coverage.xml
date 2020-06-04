@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+
+<coverage line-rate="0.8260869565217391" branch-rate="0.5"
+    lines-covered="19" lines-valid="23" branches-covered="1"
+    branches-valid="2" complexity="1.2" version="2.0.3">
+    <sources>
+        <source>/data/home/builds/jenkins/workspace/vds/linux64/ML/archetype/b2bdt/src/main/java</source>
+        <source>--source</source>
+    </sources>
+    <packages>
+        <package name="com.informatica.presales.vds.transforms.b2bdt"
+            line-rate="0.8260869565217391" branch-rate="0.5" complexity="1.2">
+            <classes>
+                <class
+                    name="com.informatica.presales.vds.transforms.b2bdt.SampleTransform"
+                    filename="com/informatica/presales/vds/transforms/b2bdt/SampleTransform.java"
+                    line-rate="0.8260869565217391" branch-rate="0.5"
+                    complexity="1.2">
+                    <methods>
+                        <method name="&lt;init&gt;" signature="()V"
+                            line-rate="1.0" branch-rate="1.0">
+                            <lines>
+                                <line number="16" hits="3" branch="false" />
+                                <line number="23" hits="3" branch="false" />
+                            </lines>
+                        </method>
+                        <method name="appendHostName" signature="([BI)[B"
+                            line-rate="1.0" branch-rate="1.0">
+                            <lines>
+                                <line number="68" hits="1" branch="false" />
+                                <line number="69" hits="1" branch="false" />
+                                <line number="72" hits="1" branch="false" />
+                                <line number="75" hits="1" branch="false" />
+                                <line number="78" hits="1" branch="false" />
+                                <line number="80" hits="1" branch="false" />
+                            </lines>
+                        </method>
+                        <method name="apply"
+                            signature="(Lcom/informatica/vds/api/VDSEvent;Lcom/informatica/vds/api/VDSEventList;)V"
+                            line-rate="1.0" branch-rate="0.5">
+                            <lines>
+                                <line number="41" hits="1" branch="false" />
+                                <line number="46" hits="1" branch="false" />
+                                <line number="47" hits="1" branch="false" />
+                                <line number="49" hits="1" branch="true"
+                                    condition-coverage="50% (1/2)">
+                                    <conditions>
+                                        <condition number="0"
+                                            type="jump" coverage="50%" />
+                                    </conditions>
+                                </line>
+                                <line number="54" hits="1" branch="false" />
+                                <line number="55" hits="1" branch="false" />
+                                <line number="58" hits="1" branch="false" />
+                            </lines>
+                        </method>
+                        <method name="close" signature="()V"
+                            line-rate="1.0" branch-rate="1.0">
+                            <lines>
+                                <line number="30" hits="1" branch="false" />
+                                <line number="34" hits="1" branch="false" />
+                            </lines>
+                        </method>
+                        <method name="open"
+                            signature="(Lcom/informatica/vds/api/VDSConfiguration;)V"
+                            line-rate="1.0" branch-rate="1.0">
+                            <lines>
+                                <line number="88" hits="2" branch="false" />
+                                <line number="92" hits="2" branch="false" />
+                            </lines>
+                        </method>
+                        <method name="parseConfig"
+                            signature="(Lcom/informatica/vds/api/VDSConfiguration;)V"
+                            line-rate="0.0" branch-rate="1.0">
+                            <lines>
+                                <line number="101" hits="0" branch="false" />
+                                <line number="104" hits="0" branch="false" />
+                                <line number="106" hits="0" branch="false" />
+                                <line number="107" hits="0" branch="false" />
+                            </lines>
+                        </method>
+                    </methods>
+                    <lines>
+                        <line number="16" hits="3" branch="false" />
+                        <line number="23" hits="3" branch="false" />
+                        <line number="30" hits="1" branch="false" />
+                        <line number="34" hits="1" branch="false" />
+                        <line number="41" hits="1" branch="false" />
+                        <line number="46" hits="1" branch="false" />
+                        <line number="47" hits="1" branch="false" />
+                        <line number="49" hits="1" branch="true"
+                            condition-coverage="50% (1/2)">
+                            <conditions>
+                                <condition number="0" type="jump"
+                                    coverage="50%" />
+                            </conditions>
+                        </line>
+                        <line number="54" hits="1" branch="false" />
+                        <line number="55" hits="1" branch="false" />
+                        <line number="58" hits="1" branch="false" />
+                        <line number="68" hits="1" branch="false" />
+                        <line number="69" hits="1" branch="false" />
+                        <line number="72" hits="1" branch="false" />
+                        <line number="75" hits="1" branch="false" />
+                        <line number="78" hits="1" branch="false" />
+                        <line number="80" hits="1" branch="false" />
+                        <line number="88" hits="2" branch="false" />
+                        <line number="92" hits="2" branch="false" />
+                        <line number="101" hits="0" branch="false" />
+                        <line number="104" hits="0" branch="false" />
+                        <line number="106" hits="0" branch="false" />
+                        <line number="107" hits="0" branch="false" />
+                    </lines>
+                </class>
+            </classes>
+        </package>
+    </packages>
+</coverage>

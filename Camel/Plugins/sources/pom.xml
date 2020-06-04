@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.informatica.messaging</groupId>
+        <artifactId>plugins</artifactId>
+        <version>2.3.2</version>
+    </parent>
+    <groupId>com.informatica.messaging.vds.plugins</groupId>
+    <artifactId>sources</artifactId>
+    <packaging>pom</packaging>
+    <name>sources</name>
+    <profiles>
+        <profile>
+            <id>all-modules</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+ 				<module>camel-common</module>
+                <module>camel-activemq</module>
+				<module>camel-couchdb</module>
+				<module>camel-feed</module>
+				<module>camel-jms</module>
+				<module>camel-mina2</module>
+				<module>camel-netty4</module>
+				<module>camel-snmp</module>
+           </modules>
+        </profile>
+    </profiles>
+</project>

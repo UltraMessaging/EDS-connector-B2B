@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vdsPlugin xmlns="http://www.informatica.com/VdsPlugin">
+    <id>VDS_TGT_ELASTICSEARCH</id>
+    <displayName>Elastic Search</displayName>
+    <version>2.3.0.02</version>
+    <type>TARGET</type>
+    <configuration>  
+        <fields>
+              <field>             
+                <textControl> 
+                    <name>index-name</name>
+                    <displayName>index-name</displayName>
+                    <description>Index(corresponds to databases)</description>
+                    <mandatory>true</mandatory>
+                    <stringTextField> 
+                        <secure>false</secure> 
+                        <default>WebLogExt</default>
+                    </stringTextField> 
+                </textControl> 
+            </field>
+            
+               <field>             
+                <textControl> 
+                    <name>type-name</name>
+                    <displayName>type-name</displayName>
+                    <description>Type(corresponds to table)</description>
+                    <mandatory>true</mandatory>
+                    <stringTextField> 
+                        <secure>false</secure> 
+                        <default>log</default>
+                    </stringTextField> 
+                </textControl> 
+            </field>
+            
+               <field>             
+                <textControl> 
+                    <name>es_url</name>
+                    <displayName>Elasticsearch URL</displayName>
+                    <description></description>
+                    <mandatory>true</mandatory>
+                    <stringTextField> 
+                        <secure>false</secure> 
+                        <default>http://localhost:9200</default>
+                    </stringTextField> 
+                </textControl> 
+            </field>
+            <field>
+                <checkBoxControl>
+                    <name>HaveMapping</name>
+                    <displayName>Mapping is added</displayName>
+                    <default>false</default>
+                    <checkedFields>
+                        <textControl>
+                            <name>MappingJSON</name>
+                            <displayName>Mapping JSON </displayName>
+                            <description>This is the mapping used for the type
+                            </description>
+                            <mandatory>false</mandatory>
+                            <stringTextField>
+                                <secure>false</secure>
+                                <default>{"mappings": {"log": {"properties": { "receiveTime": {"type":"date","format": "yyyyMMdd-HHmmss.SSS" }}}}}</default>
+                            </stringTextField>
+                        </textControl>
+                    </checkedFields>
+                </checkBoxControl>
+            </field>
+           
+        </fields>
+        
+    </configuration>
+    <runTime>
+        <pluginJar>elastic-eds-target.jar</pluginJar>
+        <pluginClass>com.informatica.elasticsearchxvdstgt.VDSCustomTarget_elastic</pluginClass>
+    </runTime>
+</vdsPlugin>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><tns:vdsPlugin xmlns:tns="http://www.informatica.com/VdsPlugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.informatica.com/VdsPlugin ../../../vds-assembly/config/vds_plugin.xsd ">
+
+    <tns:id>_CUSTOM_RADIUS_FILTER</tns:id>
+    <tns:displayName>UDP RADIUS Packet Filter</tns:displayName>
+    <tns:version>2.3.0.1</tns:version>
+    <tns:type>TRANSFORM</tns:type>
+
+    <tns:configuration>
+        <tns:fields>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>udp-port-filter</tns:name>
+                    <tns:displayName>UDP Ports to Filter</tns:displayName>
+                    <tns:description>Enter a comma separated list of ports to allow</tns:description>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+                        <tns:default>1812,1813</tns:default>
+                        <tns:placeholder>1812,1813</tns:placeholder>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>radius-code-filter</tns:name>
+                    <tns:displayName>RADIUS codes to Filter</tns:displayName>
+                    <tns:description>Enter a comma separated list of RADIUS codes to allow</tns:description>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+                        <tns:default>1,4</tns:default>
+                        <tns:placeholder>1,4</tns:placeholder>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>nas-ip-addr-filter</tns:name>
+                    <tns:displayName>NAS IP addresses to Filter</tns:displayName>
+                    <tns:description>Enter a comma separated list of numeric IP addresses</tns:description>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+                        <tns:default>0.0.0.0,172.18.209.6</tns:default>
+                        <tns:placeholder>0.0.0.0,172.18.209.6</tns:placeholder>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+        </tns:fields>
+    </tns:configuration>
+    <tns:pluginStatistics>
+        <tns:statistic>
+            <tns:id>1</tns:id>
+            <tns:displayName>Events Rejected</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+    </tns:pluginStatistics>
+    <tns:runTime>
+        <tns:pluginJar>radius-vds-filter.jar</tns:pluginJar>
+        <tns:pluginClass>com.informatica.vds.custom.transforms.radius_vds_filter.RadiusFilter</tns:pluginClass>
+    </tns:runTime>
+    <tns:helpKey/>
+</tns:vdsPlugin>

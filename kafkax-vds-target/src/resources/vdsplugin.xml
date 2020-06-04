@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><tns:vdsPlugin xmlns:tns="http://www.informatica.com/VdsPlugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.informatica.com/VdsPlugin vds_plugin.xsd">
+
+    <!-- IMPORTANT : The plugin id needs to be in sync with CommonConstants -->
+
+    <tns:id>_KAFKAX_VDS_TGT</tns:id>
+    <tns:displayName>Kafka Custom Target</tns:displayName>
+    <tns:version>2.3.0.4</tns:version>
+    <tns:type>TARGET</tns:type>
+
+    <tns:configuration>
+        <tns:fields>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>kafkaDestination</tns:name>
+                    <tns:displayName>Kafka Destination</tns:displayName>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+                        <tns:placeholder>&lt;IP:Port&gt;
+                        </tns:placeholder>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>topic</tns:name>
+                    <tns:displayName>Topic</tns:displayName>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure> 
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+        </tns:fields>
+    </tns:configuration>
+    
+    <tns:runTime>
+        <tns:pluginJar>kafkax-vds-target.jar</tns:pluginJar>
+        <tns:pluginClass>com.informatica.presales.vds.targets.kafka.KafkaTarget</tns:pluginClass>
+    </tns:runTime>
+    <tns:helpKey>kafka_target_properties</tns:helpKey>
+</tns:vdsPlugin>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<groupId>com.informatica.presales.vds.transforms</groupId>
+	<artifactId>b2bdt-vds-transform</artifactId>
+	<version>2.4.0.5</version>
+	<name>b2bdt-vds-transform</name>
+	<url>http://www.informatica.com/</url>
+	<modelVersion>4.0.0</modelVersion>
+	<repositories>
+		<repository>
+			<id>archiva.internal</id>
+			<url>http://10.1.97.18:9080/repository/internal</url>
+		</repository>
+	</repositories>
+	<properties>
+		<vds.release.version>2.4</vds.release.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.informatica.messaging</groupId>
+			<artifactId>vds-api</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
+		<dependency>
+			<groupId>com.informatica.itemfield</groupId>
+			<artifactId>CM_JavaAPI</artifactId>
+			<version>9.6.1.532</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.4.2</version>
+				<configuration>
+					<artifactSet>
+						<excludes>
+							<exclude>com.informatica.messaging.binge</exclude>
+						</excludes>
+					</artifactSet>
+					<shadedArtifactAttached>true</shadedArtifactAttached>
+					<!-- <minimizeJar>true</minimizeJar> -->
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptors>
+						<descriptor>assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<!-- this is used for inheritance merges -->
+						<id>make-assembly</id>
+						<!-- bind to the packaging phase -->
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

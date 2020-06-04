@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tns:vdsPlugin xmlns:tns="http://www.informatica.com/VdsPlugin"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.informatica.com/VdsPlugin vds_plugin.xsd ">
+
+    <!-- IMPORTANT : The plugin id needs to be in sync with CommonConstants -->
+
+    <tns:id>_VDS_SRC_CAMEL_JMS</tns:id>
+	<tns:displayName>Camel - JMS</tns:displayName>
+    <tns:version>@@VDS_RELEASE_VERSION@@</tns:version>
+    <tns:type>SOURCE</tns:type>
+
+    <tns:configuration>
+			<tns:fields>
+
+			<tns:field>
+
+				<tns:listControl>
+					<tns:name>jmsType</tns:name>
+					<tns:displayName>Type</tns:displayName>
+					<tns:items>
+						<tns:item>
+							<tns:displayName>Queue</tns:displayName>
+							<tns:id>QUEUE</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>jmsQueueName</tns:name>
+									<tns:displayName>JMS Queue</tns:displayName>
+									<tns:description>JMS Queue</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>Enter JMS Queue name.</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						<tns:item>
+							<tns:displayName>Topic</tns:displayName>
+							<tns:id>TOPIC</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>jmsTopicName</tns:name>
+									<tns:displayName>JMS Topic</tns:displayName>
+									<tns:description>JMS Topic</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>Enter JMS Topic name.</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+					</tns:items>
+					<tns:default>QUEUE</tns:default>
+				</tns:listControl>
+			</tns:field>
+			<tns:field>
+				<tns:textControl>
+					<tns:name>jmsBrokerUrl</tns:name>
+					<tns:displayName>JMS URL</tns:displayName>
+					<tns:description>JMS URL</tns:description>
+					<tns:mandatory>false</tns:mandatory>
+					<tns:stringTextField>
+						<tns:secure>false</tns:secure>
+						<tns:placeholder>failover://tcp://localhost:61616</tns:placeholder>
+					</tns:stringTextField>
+				</tns:textControl>
+			</tns:field>
+			<tns:field>
+				<tns:textControl>
+					<tns:name>jmsUserName</tns:name>
+					<tns:displayName>JMS User Name</tns:displayName>
+					<tns:description>JMS User Name</tns:description>
+					<tns:mandatory>false</tns:mandatory>
+					<tns:stringTextField>
+						<tns:secure>false</tns:secure>
+						<tns:placeholder>admin</tns:placeholder>
+					</tns:stringTextField>
+				</tns:textControl>
+
+			</tns:field>
+			<tns:field>
+				<tns:textControl>
+					<tns:name>jmsPassword</tns:name>
+					<tns:displayName>JMS Password</tns:displayName>
+					<tns:description>JMS Password</tns:description>
+					<tns:mandatory>false</tns:mandatory>
+					<tns:stringTextField>
+						<tns:secure>true</tns:secure>
+					</tns:stringTextField>
+				</tns:textControl>
+			</tns:field>
+			
+			<tns:field>
+                <tns:checkBoxControl>
+                    <tns:name>useDefaultNameSpace</tns:name>
+                    <tns:displayName>Default Name Space (for XPath expressions)</tns:displayName>
+                    <tns:default>false</tns:default>
+                    <tns:checkedFields>
+								<tns:textControl>
+									<tns:name>defaultNameSpace</tns:name>
+									<tns:displayName>Default Name Space</tns:displayName>
+									<tns:description>Example: http://www.w3.org/2005/Atom</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>http://www.w3.org/2005/Atom</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+								
+								<tns:textControl>
+									<tns:name>nameSpacePrefix</tns:name>
+									<tns:displayName>Prefix</tns:displayName>
+									<tns:description>Prefix for default Name space.</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>default</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:checkedFields>
+                </tns:checkBoxControl>
+            </tns:field>
+            
+			<!-- Filter -->
+            <tns:field>
+            	<tns:listControl>
+					<tns:name>filterType</tns:name>
+					<tns:displayName>Filter Type</tns:displayName>
+					<tns:items>
+						
+						<!-- Using Nothing -->
+						<tns:item>
+							<tns:displayName>None</tns:displayName>
+							<tns:id>FILTER_NOTHING</tns:id>
+						</tns:item>
+						
+						<!-- Using Regex -->
+						<tns:item>
+							<tns:displayName>Regex</tns:displayName>
+							<tns:id>FILTER_REGEX</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>filterRegex</tns:name>
+									<tns:displayName>Regex</tns:displayName>
+									<tns:description>Regex</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>Regex</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						
+						<!-- Using xpath expression -->
+						<tns:item>
+							<tns:displayName>XPath</tns:displayName>
+							<tns:id>FILTER_XPATH</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>filterXpathExpr</tns:name>
+									<tns:displayName>XPath Expression</tns:displayName>
+									<tns:description>XPath Expression</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>XPath Expression</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						
+						<!-- Using contains -->
+						<tns:item>
+							<tns:displayName>Contains</tns:displayName>
+							<tns:id>FILTER_CONTAINS</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>filterContains</tns:name>
+									<tns:displayName>Contains</tns:displayName>
+									<tns:description>Contains</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>Contains</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						
+						<!-- Using startsWith -->
+						<tns:item>
+							<tns:displayName>Starts With</tns:displayName>
+							<tns:id>FILTER_STARTS_WITH</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>filterStartsWith</tns:name>
+									<tns:displayName>Starts With</tns:displayName>
+									<tns:description>Starts With</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>Starts With</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						
+						<!-- Using endsWith -->
+						<tns:item>
+							<tns:displayName>Ends With</tns:displayName>
+							<tns:id>FILTER_ENDS_WITH</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>filterEndsWith</tns:name>
+									<tns:displayName>Ends With</tns:displayName>
+									<tns:description>Ends With</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>Ends With</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						
+					</tns:items>
+					<tns:default>FILTER_NOTHING</tns:default>
+				</tns:listControl>
+            </tns:field>
+            
+            <!-- Split -->
+            <tns:field>
+            	<tns:listControl>
+					<tns:name>splitType</tns:name>
+					<tns:displayName>Split Type</tns:displayName>
+					<tns:items>
+						
+						<!-- Using Nothing -->
+						<tns:item>
+							<tns:displayName>None</tns:displayName>
+							<tns:id>SPLIT_NOTHING</tns:id>
+						</tns:item>
+						
+						<!-- Using token -->
+						<tns:item>
+							<tns:displayName>Token</tns:displayName>
+							<tns:id>SPLIT_TOKEN</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>splitToken</tns:name>
+									<tns:displayName>Split token</tns:displayName>
+									<tns:description>Split token</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>Split token</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						
+						<!-- Using xpath expression -->
+						<tns:item>
+							<tns:displayName>XPath</tns:displayName>
+							<tns:id>SPLIT_XPATH</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>splitXpathExpr</tns:name>
+									<tns:displayName>XPath Expression</tns:displayName>
+									<tns:description>XPath Expression</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>XPath Expression</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						
+						<!-- Using tokenize XML tags -->
+						<tns:item>
+							<tns:displayName>XML Tag</tns:displayName>
+							<tns:id>SPLIT_XML_TAG</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>splitXmlTag</tns:name>
+									<tns:displayName>XML Tag</tns:displayName>
+									<tns:description>XML Tag</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>XML Tag</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						
+					</tns:items>
+					<tns:default>SPLIT_NOTHING</tns:default>
+				</tns:listControl>
+            </tns:field>
+              
+            <!-- Transform -->
+            <tns:field>
+				
+				<tns:listControl>
+					<tns:name>transformAppend</tns:name>
+					<tns:displayName>Transform Append (Suffix)</tns:displayName>
+					<tns:items>
+						
+						<tns:item>
+							<tns:displayName>None</tns:displayName>
+							<tns:id>NOTHING</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>CRLF</tns:displayName>
+							<tns:id>CRLF</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>LF</tns:displayName>
+							<tns:id>LF</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>Host Name</tns:displayName>
+							<tns:id>HOSTNAME</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>Host IP Address</tns:displayName>
+							<tns:id>HOSTIP</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>Timestamp</tns:displayName>
+							<tns:id>TIMESTAMP</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>Custom</tns:displayName>
+							<tns:id>CUSTOM</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>transformAppendCustom</tns:name>
+									<tns:displayName>Append Custom</tns:displayName>
+									<tns:description>Append Custom</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>Append Custom transform expression. [Allowed tokens #HOSTNAME #HOSTIP #TIMESTAMP #CRLF #LF and Any String]</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						
+					</tns:items>
+					<tns:default>NOTHING</tns:default>
+				</tns:listControl>
+            </tns:field>
+			
+			<tns:field>
+				<tns:listControl>
+					<tns:name>transformPrepend</tns:name>
+					<tns:displayName>Transform Prepend (Prefix)</tns:displayName>
+					<tns:items>
+						
+						<tns:item>
+							<tns:displayName>None</tns:displayName>
+							<tns:id>NOTHING</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>CRLF</tns:displayName>
+							<tns:id>CRLF</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>LF</tns:displayName>
+							<tns:id>LF</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>Host Name</tns:displayName>
+							<tns:id>HOSTNAME</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>Host IP Address</tns:displayName>
+							<tns:id>HOSTIP</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>Time stamp</tns:displayName>
+							<tns:id>TIMESTAMP</tns:id>
+						</tns:item>
+						
+						<tns:item>
+							<tns:displayName>Custom</tns:displayName>
+							<tns:id>CUSTOM</tns:id>
+							<tns:textFields>
+								<tns:textControl>
+									<tns:name>transformPrependCustom</tns:name>
+									<tns:displayName>Prepend Custom</tns:displayName>
+									<tns:description>Prepend Custom</tns:description>
+									<tns:mandatory>true</tns:mandatory>
+									<tns:stringTextField>
+										<tns:secure>false</tns:secure>
+										<tns:placeholder>Prepend Custom transform expression. [Allowed tokens #HOSTNAME #HOSTIP #TIMESTAMP #CRLF #LF and Any String]</tns:placeholder>
+									</tns:stringTextField>
+								</tns:textControl>
+							</tns:textFields>
+						</tns:item>
+						
+					</tns:items>
+					<tns:default>NOTHING</tns:default>
+				</tns:listControl>
+			</tns:field>
+            
+		</tns:fields>
+	</tns:configuration>
+	<tns:runTime>
+		<tns:pluginJar>camel-jms.jar</tns:pluginJar>
+		<tns:pluginClass>com.informatica.messaging.vds.sources.camel.jms.CamelJmsSource
+		</tns:pluginClass>
+	</tns:runTime>
+	<tns:helpKey>camel-jms</tns:helpKey>
+</tns:vdsPlugin>

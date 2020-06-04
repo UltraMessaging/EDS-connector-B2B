@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+	<id>camel-mina2-id</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<baseDirectory>camel-mina2</baseDirectory>
+	<files>
+		<file>
+			<source>./target/camel-mina2-${vds.release.version}-shaded.jar</source>
+			<outputDirectory></outputDirectory>
+			<destName>camel-mina2.jar</destName>
+		</file>
+		<file>
+			<source>./src/resources/vdsplugin.xml</source>
+			<outputDirectory></outputDirectory>
+			<destName>vdsplugin.xml</destName>
+		</file>
+	</files>
+</assembly>

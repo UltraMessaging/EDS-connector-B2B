@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><tns:vdsPlugin xmlns:tns="http://www.informatica.com/VdsPlugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.informatica.com/VdsPlugin vds_plugin.xsd ">
+
+    <tns:id>_CUSTOM_SRC_TXDOT_API</tns:id>
+    <tns:displayName>Web Service</tns:displayName>
+    <tns:version>2.3.2-0.7</tns:version>
+    <tns:type>SOURCE</tns:type>
+
+    <tns:configuration>
+        <tns:fields>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>polling_period_sec</tns:name>
+                    <tns:displayName>Polling Period (Seconds)</tns:displayName>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:integerTextField>
+						<tns:minValue>1</tns:minValue>
+						<tns:default>300</tns:default>
+                    </tns:integerTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>max_attempts</tns:name>
+                    <tns:displayName>Maximum Attempts per period</tns:displayName>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:integerTextField>
+						<tns:minValue>1</tns:minValue>
+						<tns:default>3</tns:default>
+                    </tns:integerTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>main_url</tns:name>
+                    <tns:displayName>Main URL</tns:displayName>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+						<tns:default>https://api.inrix.com/Traffic/Inrix.ashx</tns:default>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>main_url_query</tns:name>
+                    <tns:displayName>Main URL Query</tns:displayName>
+                    <tns:description>Enter the query string, starting with the '?' character</tns:description>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+						<tns:default>?action=GetSegmentSpeedInRadius&amp;CENTER=30.299529|-97.743469&amp;Radius=9.0&amp;RoadSegment&amp;Type=string</tns:default>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>auth_url</tns:name>
+                    <tns:displayName>Authentication Token URL</tns:displayName>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+						<tns:default>https://api.inrix.com/Traffic/Inrix.ashx</tns:default>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+            <tns:field>
+                <tns:textControl>
+                    <tns:name>auth_url_query</tns:name>
+                    <tns:displayName>Authentication Token Query String</tns:displayName>
+                    <tns:mandatory>true</tns:mandatory>
+                    <tns:stringTextField>
+                        <tns:secure>false</tns:secure>
+						<tns:default>?action=getsecuritytoken&amp;vendorid=567583903&amp;consumerid=76ea2157-7b82-44c8-af81-cafa610c9e43</tns:default>
+                    </tns:stringTextField>
+                </tns:textControl>
+            </tns:field>
+        </tns:fields>
+    </tns:configuration>
+    <tns:pluginStatistics>
+        <tns:statistic>
+            <tns:id>1</tns:id>
+            <tns:displayName>Number of Connections</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+        <tns:statistic>
+            <tns:id>2</tns:id>
+            <tns:displayName>Number of Disconnections</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+    </tns:pluginStatistics>
+    <tns:runTime>
+        <tns:pluginJar>txdot-api-source.jar</tns:pluginJar>
+        <tns:pluginClass>com.infa.vds.custom.sources.TxDOT_API_source</tns:pluginClass>
+    </tns:runTime>
+    <tns:helpKey/>
+</tns:vdsPlugin>

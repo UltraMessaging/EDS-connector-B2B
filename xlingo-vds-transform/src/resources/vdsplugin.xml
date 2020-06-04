@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<tns:vdsPlugin xmlns:tns="http://www.informatica.com/VdsPlugin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.informatica.com/VdsPlugin ../../../vds-assembly/config/vds_plugin.xsd ">
+
+    <tns:id>_CUSTOM_XLINGO_TRANSFORM</tns:id>
+    <tns:displayName>XLingo Transform</tns:displayName>
+    <tns:version>2.3.2.1</tns:version>
+    <tns:type>TRANSFORM</tns:type>
+
+    <tns:configuration>
+		<tns:fields>
+			<tns:field>
+                <tns:listControl>
+                    <tns:name>format-list-selection</tns:name>
+                    <tns:displayName>Format Selection</tns:displayName>
+                    <tns:items>
+                        <tns:item>
+                            <tns:displayName>XML to JSON</tns:displayName>
+                            <tns:id>0</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>JSON to XML</tns:displayName>
+                            <tns:id>1</tns:id>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>CSV to JSON</tns:displayName>
+                            <tns:id>2</tns:id>
+                            <tns:textFields>
+                            	<tns:textControl>
+	                            	<tns:name>csv-json-columns</tns:name>
+	                            	<tns:displayName>Column Names</tns:displayName>
+	                            	<tns:mandatory>true</tns:mandatory>
+	                            	<tns:stringTextField>
+	                            		<tns:secure>false</tns:secure>
+	                            		<tns:default>column1,column2</tns:default>
+	                            	</tns:stringTextField>
+                            	</tns:textControl>
+                            	<tns:textControl>
+	                            	<tns:name>csv-json-quote-char</tns:name>
+	                            	<tns:displayName>Quote Character</tns:displayName>
+	                            	<tns:mandatory>false</tns:mandatory>
+	                            	<tns:stringTextField>
+	                            		<tns:maxLength>1</tns:maxLength>
+	                            		<tns:secure>false</tns:secure>
+	                            	</tns:stringTextField>
+                            	</tns:textControl>
+                            	<tns:textControl>
+	                            	<tns:name>csv-json-separator-char</tns:name>
+	                            	<tns:displayName>Separator Character</tns:displayName>
+	                            	<tns:mandatory>false</tns:mandatory>
+	                            	<tns:stringTextField>
+	                            		<tns:maxLength>1</tns:maxLength>
+	                            		<tns:secure>false</tns:secure>
+	                            		<tns:default>,</tns:default>
+	                            	</tns:stringTextField>
+                            	</tns:textControl>
+                            </tns:textFields>
+                        </tns:item>
+                        <tns:item>
+                            <tns:displayName>CSV to XML</tns:displayName>
+                            <tns:id>3</tns:id>
+                            <tns:textFields>
+                            	<tns:textControl>
+	                            	<tns:name>csv-xml-columns</tns:name>
+	                            	<tns:displayName>Column Names</tns:displayName>
+	                            	<tns:mandatory>true</tns:mandatory>
+	                            	<tns:stringTextField>
+	                            		<tns:secure>false</tns:secure>
+	                            		<tns:default>column1,column2</tns:default>
+	                            	</tns:stringTextField>
+                            	</tns:textControl>
+                            	<tns:textControl>
+	                            	<tns:name>csv-xml-quote-char</tns:name>
+	                            	<tns:displayName>Quote Character</tns:displayName>
+	                            	<tns:mandatory>false</tns:mandatory>
+	                            	<tns:stringTextField>
+	                            		<tns:maxLength>1</tns:maxLength>
+	                            		<tns:secure>false</tns:secure>
+	                            	</tns:stringTextField>
+                            	</tns:textControl>
+                            	<tns:textControl>
+	                            	<tns:name>csv-xml-separator-char</tns:name>
+	                            	<tns:displayName>Separator Character</tns:displayName>
+	                            	<tns:mandatory>false</tns:mandatory>
+	                            	<tns:stringTextField>
+	                            		<tns:maxLength>1</tns:maxLength>
+	                            		<tns:secure>false</tns:secure>
+	                            		<tns:default>,</tns:default>
+	                            	</tns:stringTextField>
+                            	</tns:textControl>
+                            </tns:textFields>
+                        </tns:item>
+                    </tns:items>
+                    <tns:default>0</tns:default>
+                </tns:listControl>
+            </tns:field>
+		</tns:fields>
+	</tns:configuration>
+    
+    <tns:pluginStatistics>
+        <tns:statistic>
+            <tns:id>1</tns:id>
+            <tns:displayName>Input Bytes</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+        <tns:statistic>
+            <tns:id>2</tns:id>
+            <tns:displayName>Input Records</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+        <tns:statistic>
+            <tns:id>3</tns:id>
+            <tns:displayName>Output Bytes</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+        <tns:statistic>
+            <tns:id>4</tns:id>
+            <tns:displayName>Output Records</tns:displayName>
+            <tns:type>CUMULATIVE</tns:type>
+        </tns:statistic>
+        
+    </tns:pluginStatistics>
+    <tns:runTime>
+        <tns:pluginJar>xlingo-vds-transform.jar</tns:pluginJar>
+        <tns:pluginClass>com.informatica.vds.custom.transforms.XLingoTransform</tns:pluginClass>
+    </tns:runTime>
+    <tns:helpKey/>
+</tns:vdsPlugin>

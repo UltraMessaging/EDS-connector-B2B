@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/com/informatica/messaging/vds-api/2.3.0/vds-api-2.3.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/jmock/jmock-junit4/2.5.1/jmock-junit4-2.5.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/jmock/jmock/2.5.1/jmock-2.5.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-library/1.1/hamcrest-library-1.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/junit/junit-dep/4.4/junit-dep-4.4.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/jmock/jmock-legacy/2.5.1/jmock-legacy-2.5.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/objenesis/objenesis/1.0/objenesis-1.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/cglib/cglib-nodep/2.2.2/cglib-nodep-2.2.2.jar"/>
+	<classpathentry kind="var" path="M2_REPO/junit/junit/4.12/junit-4.12.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/json/json/20090211/json-20090211.jar"/>
+	<classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-log4j12/1.7.7/slf4j-log4j12-1.7.7.jar"/>
+	<classpathentry kind="var" path="M2_REPO/commons-io/commons-io/2.4/commons-io-2.4.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/camel/camel-core/2.16.1/camel-core-2.16.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/sun/xml/bind/jaxb-core/2.2.11/jaxb-core-2.2.11.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/sun/xml/bind/jaxb-impl/2.2.11/jaxb-impl-2.2.11.jar"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
