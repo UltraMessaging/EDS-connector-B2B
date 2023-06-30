@@ -1,5 +1,15 @@
 # UM-Specialists Shared VDS Projects
 
+# ATTENTION!!!!!
+
+The code in this repo is presented as example code. It is not supported product from Informatica. It is not being maintained.
+
+Note that it is dependent on many third-party packages that have serious vulnerabilities in various versions.
+Informatica cannot be held responsible for use of this code that results in security flaws.
+If you use this code, its continued maintenance is your responsibility.
+
+## Introduction
+
 This was previously a private repository, creating by Paul Young whilst working at Informatica. This repository is now publicly available.
 
 To initialize your copy of the repository, go to a folder set aside to clone these contents and run the following commands:<br>
@@ -9,9 +19,6 @@ git remote add origin https://github.com/phy2000/VDS-2.3
 git pull origin your-working-branch # If you have one
 git checkout your-working-branch 
 </pre>
-
-Contact pyoung@informatica.com if you want to merge changes into the master branch.
-Cheers!
 
 # It is known that git clients below version 1.8 will not work<br>
 Check version with:<br>
